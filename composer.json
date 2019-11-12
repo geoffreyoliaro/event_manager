@@ -11,6 +11,8 @@
         "laravel/tinker": "^1.0",
         "marchie/lad-utils": "dev-master"
     },
+         
+    
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",
         "filp/whoops": "^2.0",
@@ -51,10 +53,7 @@
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover"
         ]
-      
         
-        
-         
     },
     "config": {
         "preferred-install": "dist",
