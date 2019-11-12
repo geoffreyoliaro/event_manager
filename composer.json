@@ -51,7 +51,7 @@
             "@php artisan package:discover"
         ],
         "post-install-cmd": [
-            "php artisan clear-compiled",
+            "Illuminate\\Foundation\\ComposerScripts::postInstall",
             "php artisan optimize",
             "chmod -R 777 public/"
         ]
