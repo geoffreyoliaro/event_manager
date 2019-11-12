@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "66ca7343889332c2b8ecca11c251430c",
+    "content-hash": "5c53f863139b9ae92c90c35032516f87",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -803,6 +803,55 @@
                 "storage"
             ],
             "time": "2019-10-16T21:01:05+00:00"
+        },
+        {
+            "name": "marchie/lad-utils",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Marchie/lad-utils.git",
+                "reference": "660dd9cb09058638b0856a97a187a2e0bdffff3f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Marchie/lad-utils/zipball/660dd9cb09058638b0856a97a187a2e0bdffff3f",
+                "reference": "660dd9cb09058638b0856a97a187a2e0bdffff3f",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/config": "~5.0",
+                "illuminate/support": "~5.0",
+                "laravel/framework": ">=5.0",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "laravel/laravel": "^5.2.0",
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Marchie\\LaravelAzureDeploymentUtilities\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Chris March",
+                    "email": "Chris.March@tfgm.com"
+                }
+            ],
+            "description": "Command line utilities for executing Composer post install commands when deploying Laravel applications in Azure",
+            "keywords": [
+                "azure",
+                "deployment",
+                "laravel",
+                "post-install-cmd"
+            ],
+            "time": "2016-03-01T14:25:50+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -4638,7 +4687,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "marchie/lad-utils": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
