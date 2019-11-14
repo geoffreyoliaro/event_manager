@@ -1,5 +1,21 @@
 <?php
 
+
+
+
+
+
+// $url = parse_url(getenv("mysql://b1b4b00bcd4842:db584cb3@us-cdbr-iron-east-05.cleardb.net/heroku_6e141f301ced763?reconnect=true"));
+
+//     $host = $url["host"]??null;
+//     $username = $url["user"]??null;
+//     $password = $url["pass"]??null;
+//     $database = substr($url["path"], 1)??null;
+    
+
+
+
+
 return [
 
     /*
@@ -15,7 +31,7 @@ return [
 
     'default' => env('DB_CONNECTION', 'mysql'),
 
-    /*
+    /*;
     |--------------------------------------------------------------------------
     | Database Connections
     |--------------------------------------------------------------------------
@@ -30,7 +46,7 @@ return [
     | choice installed on your machine before you begin development.
     |
     */
-
+    
     'connections' => [
 
         'sqlite' => [
@@ -43,9 +59,9 @@ return [
             'driver' => 'mysql',
             'host' => env('DB_HOST', '127.0.0.1'),
             'port' => env('DB_PORT', '3306'),
-            'database' => env('DB_DATABASE', 'forge'),
-            'username' => env('DB_USERNAME', 'forge'),
-            'password' => env('DB_PASSWORD', ''),
+            'database' => env('DB_DATABASE', 'mysql://b1b4b00bcd4842:db584cb3@us-cdbr-iron-east-05.cleardb.net/heroku_6e141f301ced763?reconnect=true'),
+            'username' => env('DB_USERNAME', 'b1b4b00bcd4842'),
+            'password' => env('DB_PASSWORD', 'db584cb3'),
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',

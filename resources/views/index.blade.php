@@ -65,7 +65,7 @@
 <div class="container">
 
 </div>
-{{-- @if(count($events)>0)
+@if(count($events)>0)
     @foreach ($events as $event )
     <div class="container">
         <div class="well list-group-item">
@@ -84,21 +84,21 @@
                             @csrf
                             {{method_field('DELETE')}}
                             <button type="button" class="btn btn-success btn-sm p-1" data-toggle="modal" data-target="#buy-ticket-modal">Book</button>
-                              {{-- <button type="button" class="btn" data-toggle="modal" data-target="#buy-ticket-modal" data-ticket-type="standard-access">Buy Now</button --}}
-                        </form>
-
+                              <button type="button" class="btn" data-toggle="modal" data-target="#buy-ticket-modal" data-ticket-type="standard-access">Buy Now</button
+                        
+                            
                           </div>   
                         </div>
                        </div>
                       </div>
                      </div>
                     </div>  
-    {{-- @endforeach --}}
-    
-{{-- @else --}}
+                    </form>
+     @endforeach 
+     @else
 
         <p>No Events found</p>
-{{-- @endif --}}
+ @endif 
 
         </div>
       </div>
