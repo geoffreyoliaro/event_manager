@@ -84,7 +84,7 @@
                             @csrf
                             {{method_field('DELETE')}}
                             <button type="button" class="btn btn-success btn-sm p-1" data-toggle="modal" data-target="#buy-ticket-modal">Book</button>
-                              <button type="button" class="btn" data-toggle="modal" data-target="#buy-ticket-modal" data-ticket-type="standard-access">Buy Now</button
+                            
                         
                             
                           </div>   
