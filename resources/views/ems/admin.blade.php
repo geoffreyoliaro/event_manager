@@ -3,6 +3,8 @@
 @section('content')
 <div class="container">
 <h1>Events</h1>
+<button><a href={{url('ems/create')}}>Create More Events</a></button>
+
 </div>
 @if(count($events)>0)
     @foreach ($events as $event )

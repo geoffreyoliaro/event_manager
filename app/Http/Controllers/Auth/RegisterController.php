@@ -1,12 +1,17 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
-
+use Illuminate\Http\Request;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+
+
+use PharIo\Manifest\Email;
+use App\Mail\Booking;
+use Symfony\Component\Mime\Email as SymfonyEmail;
 
 class RegisterController extends Controller
 {
@@ -61,12 +66,13 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
-    protected function create(array $data)
+    protected function create( array $data )
     {
-        return User::create([
+        return  User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+
     }
 }

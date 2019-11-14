@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use PharIo\Manifest\Email;
+use App\Mail\Booking;
+use Symfony\Component\Mime\Email as SymfonyEmail;
 
 class UpdateUsersController extends Controller
 {
@@ -24,6 +27,8 @@ class UpdateUsersController extends Controller
         $update->vipSeats =$request->input('vipSeats');
         $update->invoice =$request->input('invoice');
         $update->save();
+
+         \mail::to($update)->send(new Booking);
         
         return view('user.pop');
     }

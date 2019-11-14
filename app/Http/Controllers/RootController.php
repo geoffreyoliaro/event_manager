@@ -1,9 +1,13 @@
 <?php
 
+
 namespace App\Http\Controllers;
-use App\Updates;
 use App\Record;
 use Illuminate\Http\Request;
+use App\Updates;
+use PharIo\Manifest\Email;
+use Symfony\Component\Mime\Email as SymfonyEmail;
+use App\Http\Controllers\Booking;
 
 class RootController extends Controller
 {
@@ -71,6 +75,14 @@ class RootController extends Controller
         $event->regularSeatsAvailable =$request->input('regularSeats');
         $event->promoImage =$fileNameToStore;
         $event->save();
+
+        // $data = array(
+        //     'name' => $request->eventName,
+        //     'email' =>$request->eventLocation
+
+        // );
+        // \Mail::to('geoffreyoliaro@gmail.com')->send(new Booking($data));
+
         
         return redirect('/ems/admin');
      }
