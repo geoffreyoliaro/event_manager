@@ -57,9 +57,9 @@ return [
 
         'mysql' => [
             'driver' => 'mysql',
-            'host' => env('DB_HOST', '127.0.0.1','mysql://b1b4b00bcd4842:db584cb3@us-cdbr-iron-east-05.cleardb.net/heroku_6e141f301ced763?reconnect=true'),
+            'host' => env('DB_HOST', '127.0.0.1'),
             'port' => env('DB_PORT', '3306'),
-            'database' => env('DB_DATABASE','forge' ),
+            'database' => env('DB_DATABASE','mysql://b1b4b00bcd4842:db584cb3@us-cdbr-iron-east-05.cleardb.net/heroku_6e141f301ced763?reconnect=true' ),
             'username' => env('DB_USERNAME', 'b1b4b00bcd4842'),
             'password' => env('DB_PASSWORD', 'db584cb3'),
             'unix_socket' => env('DB_SOCKET', ''),
