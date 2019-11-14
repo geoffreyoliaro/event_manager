@@ -65,7 +65,7 @@
 <div class="container">
 
 </div>
-@if(count($events)>0)
+{{-- @if(count($events)>0)
     @foreach ($events as $event )
     <div class="container">
         <div class="well list-group-item">
@@ -93,12 +93,12 @@
                       </div>
                      </div>
                     </div>  
-    @endforeach
+    {{-- @endforeach --}}
     
-@else
+{{-- @else --}}
 
         <p>No Events found</p>
-@endif
+{{-- @endif --}}
 
         </div>
       </div>
