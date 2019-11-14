@@ -12,13 +12,16 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
 Auth::routes();
-
+Route::get('/','RootController@index');
+Route::get('/index','RootController@up');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('ems', 'RootController');
-Route::post('store','RootController@store');
+Route::resource('user', 'ManageUsersController');
+
+
 
 

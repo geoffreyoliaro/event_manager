@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Updates;
 use App\Record;
 use Illuminate\Http\Request;
 
@@ -16,9 +16,14 @@ class RootController extends Controller
    
      public function index()
     {
-        return view("ems.index");
+        $events =Record::OrderBy('created_at','desc')->get();
+        
+        return view("index")->with('events',$events);
+
+        
     }
 
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -67,7 +72,7 @@ class RootController extends Controller
         $event->promoImage =$fileNameToStore;
         $event->save();
         
-        return view('ems.index');
+        return redirect('/ems/admin');
      }
 
     /**
@@ -76,9 +81,11 @@ class RootController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        $events =Record::OrderBy('created_at','desc')->get();
+        return view('ems.admin')->with('events',$events);
+
     }
 
     /**
@@ -99,10 +106,12 @@ class RootController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        
     }
+
+   
 
     /**
      * Remove the specified resource from storage.
@@ -110,8 +119,15 @@ class RootController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
+    public function destroy($event_id)        
+    {   
+        
+        $events =Record::find($event_id);
+        Record::where('event_id', $events->event_id)->delete();
+        // $events->delete();
+        return redirect('/ems/admin')->with('success','delete success');
+        // return response()->json($events);
+
+        // return view('ems.admin')->with('events',$events);
     }
 }

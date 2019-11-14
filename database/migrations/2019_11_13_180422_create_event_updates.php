@@ -14,12 +14,15 @@ class CreateEventUpdates extends Migration
     public function up()
     {
         Schema::create('event_updates', function (Blueprint $table) {
-            $table->integer('event_id');
-            $table->string('eventName');
-            $table->string('eventLocation');
-            $table->bigInteger('vipSeatsTaken');
-            $table->bigInteger('regularSeatsTaken');
-            $table->bigInteger('invoice');
+            $table->increments('event_id');
+            $table->string('username');
+            $table->string('email');
+            $table->integer('regularSeats');
+            $table->integer('vipSeats');
+            $table->integer('invoice')->nullable();
+
+
+
             $table->timestamps();
         });
     }

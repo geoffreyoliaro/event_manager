@@ -61,99 +61,45 @@
         <div class="section-header">
           <h2> Available Events</h2>
           <p>Here are some of the available churchill show and churchill raw events</p>
-        </div>
+          
+<div class="container">
 
-        <div class="row">
-          <div class="col-lg-4 col-md-6">
-            <div class="speaker">
-              <img src="img/speakers/1.jpg" alt="Speaker 1" class="img-fluid">
-              <div class="details">
-                <h3><a href="speaker-details.html">Brenden Legros</a></h3>
-                <p>Quas alias incidunt</p>
-                <div class="social">
-                  <a href=""><i class="fa fa-twitter"></i></a>
-                  <a href=""><i class="fa fa-facebook"></i></a>
-                  <a href=""><i class="fa fa-google-plus"></i></a>
-                  <a href=""><i class="fa fa-linkedin"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6">
-            <div class="speaker">
-              <img src="img/speakers/2.jpg" alt="Speaker 2" class="img-fluid">
-              <div class="details">
-                <h3><a href="speaker-details.html">Hubert Hirthe</a></h3>
-                <p>Consequuntur odio aut</p>
-                <div class="social">
-                  <a href=""><i class="fa fa-twitter"></i></a>
-                  <a href=""><i class="fa fa-facebook"></i></a>
-                  <a href=""><i class="fa fa-google-plus"></i></a>
-                  <a href=""><i class="fa fa-linkedin"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6">
-            <div class="speaker">
-              <img src="img/speakers/3.jpg" alt="Speaker 3" class="img-fluid">
-              <div class="details">
-                <h3><a href="speaker-details.html">Cole Emmerich</a></h3>
-                <p>Fugiat laborum et</p>
-                <div class="social">
-                  <a href=""><i class="fa fa-twitter"></i></a>
-                  <a href=""><i class="fa fa-facebook"></i></a>
-                  <a href=""><i class="fa fa-google-plus"></i></a>
-                  <a href=""><i class="fa fa-linkedin"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6">
-            <div class="speaker">
-              <img src="img/speakers/4.jpg" alt="Speaker 4" class="img-fluid">
-              <div class="details">
-                <h3><a href="speaker-details.html">Jack Christiansen</a></h3>
-                <p>Debitis iure vero</p>
-                <div class="social">
-                  <a href=""><i class="fa fa-twitter"></i></a>
-                  <a href=""><i class="fa fa-facebook"></i></a>
-                  <a href=""><i class="fa fa-google-plus"></i></a>
-                  <a href=""><i class="fa fa-linkedin"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6">
-            <div class="speaker">
-              <img src="img/speakers/5.jpg" alt="Speaker 5" class="img-fluid">
-              <div class="details">
-                <h3><a href="speaker-details.html">Alejandrin Littel</a></h3>
-                <p>Qui molestiae natus</p>
-                <div class="social">
-                  <a href=""><i class="fa fa-twitter"></i></a>
-                  <a href=""><i class="fa fa-facebook"></i></a>
-                  <a href=""><i class="fa fa-google-plus"></i></a>
-                  <a href=""><i class="fa fa-linkedin"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6">
-            <div class="speaker">
-              <img src="img/speakers/6.jpg" alt="Speaker 6" class="img-fluid">
-              <div class="details">
-                <h3><a href="speaker-details.html">Willow Trantow</a></h3>
-                <p>Non autem dicta</p>
-                <div class="social">
-                  <a href=""><i class="fa fa-twitter"></i></a>
-                  <a href=""><i class="fa fa-facebook"></i></a>
-                  <a href=""><i class="fa fa-google-plus"></i></a>
-                  <a href=""><i class="fa fa-linkedin"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
+</div>
+@if(count($events)>0)
+    @foreach ($events as $event )
+    <div class="container">
+        <div class="well list-group-item">
+            <div class="row justify-content-center">
+                <div class="col-md-12">
+                    <div class="form-group row">            
+                       <div class="col-md-2" >
+                       <img style="width:100%" src="/storage/cover_images/{{$event->promoImage}}">
+                         </div>
+                      <div class=" row-md-6">
+                            <h3>{{$event->eventName}}</h3>
+                             <h6>{{$event->eventLocation}}</h6>  
+                          <div><small>Posted on {{$event->created_at}}</small></div>
+                           
+                        <form action="{{route('ems.destroy', array($event->event_id))}}"method = "POST" class="float-left">
+                            @csrf
+                            {{method_field('DELETE')}}
+                            <button type="button" class="btn btn-success btn-sm p-1" data-toggle="modal" data-target="#buy-ticket-modal">Book</button>
+                              {{-- <button type="button" class="btn" data-toggle="modal" data-target="#buy-ticket-modal" data-ticket-type="standard-access">Buy Now</button --}}
+                        </form>
+
+                          </div>   
+                        </div>
+                       </div>
+                      </div>
+                     </div>
+                    </div>  
+    @endforeach
+    
+@else
+
+        <p>No Events found</p>
+@endif
+
         </div>
       </div>
 
@@ -232,19 +178,25 @@
               </button>
             </div>
             <div class="modal-body">
-              <form method="POST" action="#">
+            
+              <form method="POST" action="{{route('user.store')}}" enctype="multipart/form-data">
+                @csrf
+                
+
+                        
+                   
                 <div class="form-group">
-                  <input type="text" class="form-control" name="your-name" placeholder="Your Name">
+                  <input id="username" type="text" class="form-control" name="username" placeholder="Your Name">
                 </div>
                   <div class="form-group">
-                  <input type="text" class="form-control" name="your-email" placeholder="Your Email">
+                  <input id="email"type="text" class="form-control" name="email" placeholder="Your Email">
                 </div>
                 
                 <div class="form-group">
-                  <select id="ticket-type" name="ticket-type" class="form-control" >
+                  <select id="ticket-type" name="vipSeats" class="form-control" >
                     <option value="">-- Select Your Ticket Type --</option>
-                    <option value="Regular-access">Regular Access</option>
-                    <option value="VIP-access">VIP Access</option>
+                    <option id="regularSeats" value="Regular-access">Regular Access</option>
+                    <option id="vipSeats" value="VIP-access">VIP Access</option>
                     
                   </select>
                 </div>
