@@ -6,31 +6,34 @@ use Illuminate\Http\Request;
 use PharIo\Manifest\Email;
 use App\Mail\Booking;
 use Symfony\Component\Mime\Email as SymfonyEmail;
+use App\Updates;
+
 
 class UpdateUsersController extends Controller
 {
     public function store(Request $request)
     {   
-        $this->validate($request, [
-            'username'=>'required',
-            'email'=>'required',
-            'regularSeats' =>'required',
-            'vipSeats' => 'required',
-            'invoice'=> 'nullable',
+    //     $this->validate($request, [
+    //         'username'=>'required',
+    //         'email'=>'required',
+    //         'regularSeats' =>'required',
+    //         'vipSeats' => 'required',
+    //         'invoice'=> 'nullable',
             
-        ]);
+    //     ]);
         
-        $update = new Updates;
-        $update->username =$request->input('username');
-        $update->email =$request->input('email');
-        $update->regularSeats =$request->input('regularSeats');
-        $update->vipSeats =$request->input('vipSeats');
-        $update->invoice =$request->input('invoice');
-        $update->save();
+    //     $update = new Updates;
+    //     $update->username =$request->input('username');
+    //     $update->email =$request->input('email');
+    //     $update->regularSeats =$request->input('regularSeats');
+    //     $update->vipSeats =$request->input('vipSeats');
+    //     $update->invoice =$request->input('invoice');
+    //     $update->save();
 
-         \mail::to($update)->send(new Booking);
+    //      \mail::to($update)->send(new Booking);
         
-        return view('user.pop');
+        dd(request()->all());
+        // return view('user.pop');
     }
 
 }

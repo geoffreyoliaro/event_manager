@@ -1,3 +1,4 @@
+let params = {}
 jQuery(document).ready(function( $ ) {
 
   // Back to top button
@@ -141,81 +142,71 @@ jQuery(document).ready(function( $ ) {
     var ticketType = button.data('ticket-type');
     var modal = $(this);
     modal.find('#ticket-type').val(ticketType);
-  })
+  });
 
-  var data = {
-    
-  }  
-      $('#eventName').keyup( function(){
-      eventName = $('#eventName').val();
-     data.eventName = eventName;
-    // console.log(eventName);
+    $('#noOfSeats').keyup(function(){
+      var selectedVal = $('#ticket-type option:selected').text();
+      var seats = $('#noOfSeats').val();
+      if (selectedVal == "VIP Access"){
+        var invoice = seats * 2500
+         $('.getInvoice').html(invoice);
+
+      }
+      else if(selectedVal =="Regular Access"){
+        var invoice = seats * 1000
+        $('.getInvoice').html(invoice);
+        
+
+      }
+
     });
-  
     
-
-  $('#eventLocation').keyup(function(){
-      showLoc = this.showLoc
-      showLoc = $('#eventLocation').val();
-      data.showLoc= showLoc;
-      // console.log(showLoc); 
+    $('#username').keyup(function(){
+      params.username = $('#username').val();
+      console.log(params);
       });
-  
-  $(document).on('input','#vipSeats',function(){
-    var vipSeats=$('#vipSeats').val();
-    data.vipSeats = vipSeats
-    // console.log(vipSeats);
-  });
 
-  $(document).on('input','#vipPrice',function(){
-    var vipPrice=$('#vipPrice').val();
-    data.vipPrice = vipPrice;
-    // console.log(vipPrice);
-  });
+    $('#email').keyup(function(){
+      params.email = $('#email').val();
+      console.log(params);
+      });
 
-  $(document).on('input','#regularSeats',function(){
-    var regSeats=$('#regularSeats').val();
-    data.regSeats = regSeats;
-    // console.log(regSeats);
-  });
+     $('.ticketType').change(function(){
+      params.seatType = $('.ticketType option:selected').text();
+      console.log(params);
+     }); 
 
-  $(document).on('input','#regularPrice',function(){
-    var regPrice=$('#regularPrice').val();
-    data.regPrice = regPrice;
-    // console.log(regPrice);
-  });
-  
-  $(document).on('input','#eventImg',function(){
-    var eventImg=$('#eventImg').val();
-    data.eventImg = eventImg;
-    // console.log(eventImg);
-  });
+    $('.Seats').keyup(function(){
+      params.noOfSeats = $('.Seats').val();
+      params.invoice = $('.getInvoice').text();
+      console.log(params);
+      });
+      
+});
 
-  console.log(data);
 
-  
-let submitData = function(){
-  
-  let dataParams = {
-      itemName:$('eventName').text(),
-      vehicleRegNo:$('#getRegNo').text(),
-      quantity:$('#getAmount').text(),
-      serialNo:$('#getSerialNo').text(),
-      comment:$('#getComment').text(),
-      recordAffiliation:$('#getAffiliation').text(),
-      serviceability:$('#getService').text()
-  };
+
+
+$.ajaxSetup({
+  headers: {
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+  }
+});
+
+let booking = function(){
   $.ajax({
       type:'GET',
-      url:'/storeRecord',
-      data:dataParams,
-      success:function(dataParams){
-      // console.log(dataParams);
+      url:'/store',
+      data:params,
+      dataType:"json",
+      // jsonpCallback: 'callback',
+      success:function(Params){
+          console.log(params);
+          console.log("hey");
+      },
+      error:function(){
+        alert("error!")
       }
   });
   }
-  
 
-  
-
-});

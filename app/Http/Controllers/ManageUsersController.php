@@ -1,10 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Updates;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Input;
 
 
 class ManageUsersController extends Controller
@@ -32,29 +30,32 @@ class ManageUsersController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request  $request 
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {   
-        $this->validate($request, [
-            'username'=>'required',
-            'email'=>'required',
-            'regularSeats' =>'required',
-            'vipSeats' => 'required',
-            'invoice'=> 'nullable',
-            
-        ]);
-        
-        $update = new Updates;
-        $update->username =$request->input('username');
-        $update->email =$request->input('email');
-        $update->regularSeats =$request->input('regularSeats');
-        $update->vipSeats =$request->input('vipSeats');
-        $update->invoice =$request->input('invoice');
-        $update->save();
-        
-        return view('user.pop');
+    { 
+
+$this->validate($request, [
+'username'=>'required',
+'email'=>'required|email',
+'seatType' =>'required',
+'noOfSeats' => 'required',
+'invoice'=> 'required'
+
+]);
+
+$update = new Updates;
+$update->username =$request->input('username');
+$update->email =$request->input('email');
+$update->regularSeats =$request->input('seatType');
+$update->vipSeats =$request->input('noOfSeats');
+$update->invoice =$request->input('invoice');
+$update->save();
+dd(request()->all());
+return view('user.booking');
+return response()->json($update);
+
     }
 
     /**

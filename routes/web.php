@@ -1,4 +1,6 @@
 <?php
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +19,7 @@ Route::get('/', function () {
 
 Auth::routes();
 Route::get('/','RootController@index');
+Route::get('store',['middleware'=>'cors','RootController@store']);
 Route::get('/index','RootController@up');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('ems', 'RootController');

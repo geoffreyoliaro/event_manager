@@ -9,7 +9,7 @@ class Updates extends Model
     protected $table = 'event_updates';
     protected $primaryKey ='event_Id';
     public $timestamps = true;
-    protected $fillable = [ 'username', 'email', 'regularSeats','vipSeats'];
+    protected $fillable = [ 'username', 'email', 'seatType','noOfSeats','invoice'];
     
     public function user(){
         return $this->belongsToMany('App\User');

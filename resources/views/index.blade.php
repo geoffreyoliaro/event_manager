@@ -122,7 +122,7 @@
             <div class="card mb-5 mb-lg-0">
               <div class="card-body">
                 <h5 class="card-title text-muted text-uppercase text-center">Standard Access</h5>
-                <h6 class="card-price text-center">sh1000</h6>
+                <h6 class="card-price text-center">Sh1000</h6>
                 <hr>
                 <ul class="fa-ul">
                   <li><span class="fa-li"><i class="fa fa-check"></i></span>Regular Seating</li>
@@ -179,32 +179,34 @@
             </div>
             <div class="modal-body">
             
-              <form method="POST" action="{{route('user.store')}}" enctype="multipart/form-data">
+              <form >
                 @csrf
-                
-
-                        
-                   
                 <div class="form-group">
-                  <input id="username" type="text" class="form-control" name="username" placeholder="Your Name">
+                  
+
+                  <input id="username" type="text" class="form-control username" name="username" placeholder="Your Name" required>
                 </div>
                   <div class="form-group">
-                  <input id="email"type="text" class="form-control" name="email" placeholder="Your Email">
+                  <input id="email"type="text" class="form-control email" name="email" placeholder="Your Email" required>
                 </div>
                 
                 <div class="form-group">
-                  <select id="ticket-type" name="vipSeats" class="form-control" >
+                  <select id="ticket-type" name="seatType"class="form-control ticketType" required>
                     <option value="">-- Select Your Ticket Type --</option>
-                    <option id="regularSeats" value="Regular-access">Regular Access</option>
-                    <option id="vipSeats" value="VIP-access">VIP Access</option>
+                    <option  value="Regular-access">Regular Access</option>
+                    <option  value="VIP-access">VIP Access</option>
                     
                   </select>
                 </div>
                 <div class="form-group">
-                  <input type="number" class="form-control" name="your-name" placeholder="How many tickets are you booking today" min="1" max="5">
+                  <input type="number" class="form-control Seats"  id="noOfSeats" name="noOfSeats" placeholder="How many tickets are you booking today" min="1" max="5" required>
                 </div>
+                <span class="form-control">
+                  <b>Invoice:<span class="getInvoice invoice" name="invoice"></span><br></b>
+                </span>
+                <br>
                 <div class="text-center">
-                  <button type="submit" class="btn">Book Now</button>
+                  <button  class="btn" onclick="booking();">Book Now</button>
                 </div>
               </form>
             </div>

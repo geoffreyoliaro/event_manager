@@ -6,6 +6,7 @@
 
 <!-- CSRF Token -->
 <meta name="csrf-token" content="{{ csrf_token() }}">
+<meta id="token" name="token" content="{ { csrf_token() } }">
 
 <title>{{ config('app.name', 'Laravel') }}</title>
 
@@ -20,8 +21,8 @@
 <link href="{{asset('css/app.css') }}" rel="stylesheet">
 <link href="{{asset('css/style.css') }}" rel="stylesheet">
 <link href="{{asset('lib/animate/animate.min.css') }}" rel="stylesheet">
-<link href="{{asset('lib/bootstrap/css/bootsrap.min.css') }}" rel="stylesheet">
-<link href="{{asset('lib/fontawesome/css/font-awesome.min.css') }}" rel="stylesheet">
+<link href="{{asset('lib/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+<link href="{{asset('lib/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
 <link href="{{asset('lib/venobox/venobox.css')}}" rel="stylesheet">
 <link href="{{asset('lib/owlcarousel/assets/owl.carousel.min.css')}}" rel="stylesheet">
 
