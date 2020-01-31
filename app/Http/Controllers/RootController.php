@@ -2,9 +2,12 @@
 
 
 namespace App\Http\Controllers;
+
+use App\Mail\BookingFormMail;
 use App\Record;
 use Illuminate\Http\Request;
 use App\Updates;
+use Illuminate\Support\Facades\Mail;
 use PharIo\Manifest\Email;
 use Symfony\Component\Mime\Email as SymfonyEmail;
 
@@ -104,6 +107,7 @@ $this->validate($request, [
     
     ]);
     
+
     $update = new Updates;
     $update->username =$request->input('username');
     $update->email =$request->input('email');
@@ -111,8 +115,9 @@ $this->validate($request, [
     $update->noOfSeats =$request->input('noOfSeats');
     $update->invoice =$request->input('invoice');
     $update->save();
-    dd(request()->all());
-    return view('user.booking');
+    
+    Mail::to('geoffreyoliaro@gmail.com')->send( new BookingFormMail());
+    return view('ems.admin');
     return response()->json($update);
     
      }

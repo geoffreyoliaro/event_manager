@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Updates extends Model
 {
-    protected $table = 'event_updates';
+    protected $table = 'events_updates';
     protected $primaryKey ='event_Id';
     public $timestamps = true;
     protected $fillable = [ 'username', 'email', 'seatType','noOfSeats','invoice'];

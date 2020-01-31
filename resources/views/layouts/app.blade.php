@@ -6,13 +6,9 @@
 
 <!-- CSRF Token -->
 <meta name="csrf-token" content="{{ csrf_token() }}">
-<meta id="token" name="token" content="{ { csrf_token() } }">
-
 <title>{{ config('app.name', 'Laravel') }}</title>
-
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}" defer></script>
-
 <!-- Fonts -->
 <link rel="dns-prefetch" href="//fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800" rel="stylesheet">

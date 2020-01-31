@@ -181,6 +181,12 @@ jQuery(document).ready(function( $ ) {
       params.invoice = $('.getInvoice').text();
       console.log(params);
       });
+  
+    //   $('#btnSubmit').click(function(){
+    //   $.get('/store', params, function(response) {
+    //     console.log(response);
+    //   });
+    // });
       
 });
 
@@ -208,5 +214,4 @@ let booking = function(){
         alert("error!")
       }
   });
-  }
-
+}

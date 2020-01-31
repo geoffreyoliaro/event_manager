@@ -169,6 +169,7 @@
 
       <!-- Modal Order Form -->
       <div id="buy-ticket-modal" class="modal fade">
+
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -180,10 +181,8 @@
             <div class="modal-body">
             
               <form >
-                @csrf
+              @csrf
                 <div class="form-group">
-                  
-
                   <input id="username" type="text" class="form-control username" name="username" placeholder="Your Name" required>
                 </div>
                   <div class="form-group">
@@ -206,7 +205,7 @@
                 </span>
                 <br>
                 <div class="text-center">
-                  <button  class="btn" onclick="booking();">Book Now</button>
+                  <button  class="btn"  id= "btnSubmit"onclick="booking();">Book Now</button>
                 </div>
               </form>
             </div>
