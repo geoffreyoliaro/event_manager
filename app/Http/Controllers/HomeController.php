@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Charts;
+use App\Charts\SampleChart;
 
 class HomeController extends Controller
 {

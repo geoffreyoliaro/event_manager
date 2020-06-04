@@ -66,59 +66,59 @@ class RootController extends Controller
     public function store(Request $request)
     {
         
-        // $this->validate($request, [
-        //     'eventName'=>'required',
-        //     'eventLocation'=>'required',
-        //     'vipSeats' =>'required',
-        //     'vipPrice' => 'required',
-        //     'regularSeats'=> 'required',
-        //     'regularPrice'=>'required',
-        //     'eventImg' =>'image|nullable|max:1999'
-        // ]);
+        $this->validate($request, [
+            'eventName'=>'required',
+            'eventLocation'=>'required',
+            'vipSeats' =>'required',
+            'vipPrice' => 'required',
+            'regularSeats'=> 'required',
+            'regularPrice'=>'required',
+            'eventImg' =>'image|nullable|max:1999'
+        ]);
         
-        // if($request->hasFile('eventImg')){
-        //     $filenameWithExt =$request->file('eventImg')->getClientOriginalName();
-        //     $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-        //     $extension =$request->file('eventImg')->getClientOriginalExtension();
-        //     $fileNameToStore = $filename.'_'.time().'.'.$extension;
-        //     $path =$request->file('eventImg')->storeAs('public/cover_images',$fileNameToStore);
-        //     }   else{
-        //      $fileNameToStore ='noimage.jpg';
-        // }
-        // $event = new Record;
-        // $event->eventName =$request->input('eventName');
-        // $event->eventLocation =$request ->input('eventLocation');
-        // $event->vipSeatsAvailable =$request->input('vipSeats');
-        // $event->vipPrice =$request->input('vipPrice');
-        // $event->regularPrice =$request->input('regularPrice');
-        // $event->regularSeatsAvailable =$request->input('regularSeats');
-        // $event->promoImage =$fileNameToStore;
-        // $event->save();
-        // return redirect('/ems/admin');
+        if($request->hasFile('eventImg')){
+            $filenameWithExt =$request->file('eventImg')->getClientOriginalName();
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            $extension =$request->file('eventImg')->getClientOriginalExtension();
+            $fileNameToStore = $filename.'_'.time().'.'.$extension;
+            $path =$request->file('eventImg')->storeAs('public/cover_images',$fileNameToStore);
+            }   else{
+             $fileNameToStore ='noimage.jpg';
+        }
+        $event = new Record;
+        $event->eventName =$request->input('eventName');
+        $event->eventLocation =$request ->input('eventLocation');
+        $event->vipSeatsAvailable =$request->input('vipSeats');
+        $event->vipPrice =$request->input('vipPrice');
+        $event->regularPrice =$request->input('regularPrice');
+        $event->regularSeatsAvailable =$request->input('regularSeats');
+        $event->promoImage =$fileNameToStore;
+        $event->save();
+        return redirect('/ems/admin');
 
 
         
-$this->validate($request, [
-    'username'=>'required',
-    'email'=>'required|email',
-    'seatType' =>'required',
-    'noOfSeats' => 'required',
-    'invoice'=> 'required'
+// $this->validate($request, [
+//     'username'=>'required',
+//     'email'=>'required|email',
+//     'seatType' =>'required',
+//     'noOfSeats' => 'required',
+//     'invoice'=> 'required'
     
-    ]);
+//     ]);
     
 
-    $update = new Updates;
-    $update->username =$request->input('username');
-    $update->email =$request->input('email');
-    $update->seatType =$request->input('seatType');
-    $update->noOfSeats =$request->input('noOfSeats');
-    $update->invoice =$request->input('invoice');
-    $update->save();
+//     $update = new Updates;
+//     $update->username =$request->input('username');
+//     $update->email =$request->input('email');
+//     $update->seatType =$request->input('seatType');
+//     $update->noOfSeats =$request->input('noOfSeats');
+//     $update->invoice =$request->input('invoice');
+//     $update->save();
     
-    Mail::to('geoffreyoliaro@gmail.com')->send( new BookingFormMail());
-    return view('ems.admin');
-    return response()->json($update);
+//     Mail::to('geoffreyoliaro@gmail.com')->send( new BookingFormMail());
+//     return view('ems.admin');
+//     return response()->json($update);
     
      }
 
